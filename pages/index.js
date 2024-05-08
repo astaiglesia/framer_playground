@@ -11,18 +11,58 @@ let links = [
   { path: "/8-calendar", label: "Lesson 8 - Calendar" },
 ];
 
+import MotionHeader from "./4-header-part-2/MotionHeader";
+import Carousel from "./6-carousel-part-2/Carousel";
+
 export default function HomePage() {
+  
   return (
-    <div className="p-8">
-      <ul className="space-y-3">
-        {links.map((link) => (
-          <li key={link.path}>
-            <Link href={link.path}>
-              <a className="text-blue-600 underline">{link.label}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
+    <div className="mx-auto flex w-full max-w-3xl flex-1 overflow-hidden text-slate-600">
+      <div className="z-0 flex-1 overflow-y-scroll">
+      
+        {/* install into root layout */}
+        <MotionHeader />
+
+        <main>
+          <div className=" pt-28 p-8">
+            <ul className="space-y-3">
+              {links.map((link) => (
+                <li key={link.path}>
+                  <Link href={link.path}>
+                    <a className="text-blue-600 underline">{link.label}</a>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-8 space-y-6">
+
+            {[...Array(4).keys()].map((i) => (
+              <div key={i} className="outline space-y-2 text-sm">
+                <p className="h-4 w-5/6 rounded bg-slate-200" />
+                <p className="h-4 rounded bg-slate-200" />
+                <p className="h-4 w-4/6 rounded bg-slate-200" />
+              </div>
+            ))}
+
+
+
+            <div className="rounded bg-slate-200">
+              <Carousel />
+            </div>
+
+
+            {[...Array(90).keys()].map((i) => (
+              <div key={i} className="space-y-2 text-sm">
+                <p className="h-4 w-5/6 rounded bg-slate-200" />
+                <p className="h-4 rounded bg-slate-200" />
+                <p className="h-4 w-4/6 rounded bg-slate-200" />
+              </div>
+            ))}
+          </div>
+        </main>
+      </div>
     </div>
   );
 }
